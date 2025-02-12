@@ -37,7 +37,7 @@ def trade_closed_curbar(data, capital, long_margin, short_margin, volume_multipl
     open_quantity = 0
     open_poscost = 0
 
-    for dt, price in data.close.iteritems():
+    for dt, price in data.close.items():
         open_price = data.open[dt]
         curtime = dt.time()
         if curtime in [bt1, bt2, bt3]:
@@ -105,25 +105,25 @@ def entries_maked_nextbar(data):
     predt = data.index[0]
     prelow = data.low[0]
 
-    for dt, low in data.low.iteritems():
+    for dt, low in data.low.items():
         if dt.date() == predt.date() and dt.time() < st1 and prelow - OFFSET >= low:
             buy_entries.append(predt)
         prelow = low
         predt = dt
 
-    for dt, high in data.high.iteritems():
+    for dt, high in data.high.items():
         if dt.date() == predt.date() and dt.time() < st1 and high - prehigh >= OFFSET:
             short_entries.append(predt)
         prehigh = high
         predt = dt
 
-    for dt, high in data.high.iteritems():
+    for dt, high in data.high.items():
         if dt.time() > bt3 and high - prehigh >= OFFSET:
             sell_entries.append(predt)
         prehigh = high
         predt = dt
 
-    for dt, low in data.low.iteritems():
+    for dt, low in data.low.items():
         if dt.time() > bt3 and prelow - low >= OFFSET:
             cover_entries.append(predt)
         prelow = low
@@ -162,7 +162,7 @@ def in_closed_nextbar(data, buy_entries, capital, long_margin, short_margin, vol
     open_equities = []
     open_cashes = []
     num = 0
-    for dt, low in data.low.iteritems():
+    for dt, low in data.low.items():
         curtime = dt.time()
         close = data.close[dt]
         open_price = data.open[dt]
@@ -243,7 +243,7 @@ def out_closed_nextbar(data, cover_entries, capital,
     open_cashes = []
     open_equities = []
     num = 0
-    for dt, low in data.low.iteritems():
+    for dt, low in data.low.items():
         price = data.close[dt]
         open_price = data.open[dt]
 

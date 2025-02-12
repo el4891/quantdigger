@@ -6,7 +6,7 @@ matplotlib.use('TkAgg')
 import matplotlib.pyplot as plt
 from matplotlib.widgets import Button
 
-from quantdigger.util import gen_logger as log
+from quantdigger.util import log
 from quantdigger.interaction.windowgate import WindowGate
 from quantdigger.widgets.mplotwidgets import widgets
 from quantdigger.widgets.mplotwidgets.mplots import Candles

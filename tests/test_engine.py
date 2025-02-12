@@ -7,7 +7,7 @@ import pandas as pd
 import os
 import talib
 import numpy as np
-from quantdigger.util.log import gen_log as logger
+from quantdigger.util import log
 from quantdigger import (
     add_strategies,
     NumberSeries,
@@ -202,7 +202,7 @@ class TestTechnical(unittest.TestCase):
             self.assertTrue(target == source, "单值指标回溯测试失败!")
         for nan in ma3[:4]:
             self.assertFalse(nan == nan, "单值指标回溯NaN值测试失败!")
-        logger.info('-- 单值指标测试成功 --')
+        log.info('-- 单值指标测试成功 --')
 
         # 多值指标运算和回溯测试
         upper, middler, lower = talib.BBANDS(np.asarray(close), 2, 2, 2)
@@ -219,8 +219,8 @@ class TestTechnical(unittest.TestCase):
                 self.assertFalse(nan == nan, "多值指标回溯NaN值测试失败!")
             for source, target in zip(boll[v][1:], boll3[v][4:]):
                 self.assertTrue(target == source, "多值指标回溯测试失败!")
-        logger.info('-- 多值指标测试成功 --')
-        logger.info('***** 指标测试成功 *****\n')
+        log.info('-- 多值指标测试成功 --')
+        log.info('***** 指标测试成功 *****\n')
 
 
 class TestMainFunction(unittest.TestCase):
@@ -303,7 +303,7 @@ class TestMainFunction(unittest.TestCase):
         target = ['A1'] * length + ['A2'] * length + ['B1'] * length + ['B2'] * length
         self.assertTrue(target == on_bar['strategy'], 'on_bar测试失败！')
         self.assertTrue(['A1', 'A2', 'B1', 'B2'] == on_exit['strategy'], 'on_exit测试失败！')
-        logger.info('-- 策略on_xxx主函数测试成功 --')
+        log.info('-- 策略on_xxx主函数测试成功 --')
 
 
 class TestTimeAlign(unittest.TestCase):
@@ -371,7 +371,7 @@ class TestTimeAlign(unittest.TestCase):
         fname = os.path.join(os.getcwd(), 'data', 'diffPeriodOnBar.txt')
         lines = [line.rstrip('\n') for line in open(fname)]
         self.assertTrue(on_bar_timestep == lines, "on_bar时间对齐失败")
-        logger.info('on_symbol, on_bar 时间对齐测试成功！')
+        log.info('on_symbol, on_bar 时间对齐测试成功！')
 
 
 class TestDefaultPContract(unittest.TestCase):
@@ -396,7 +396,7 @@ class TestDefaultPContract(unittest.TestCase):
                 'capital': 1000000.0 * 0.5,
             }
         ])
-        logger.info("默认合约测试成功！")
+        log.info("默认合约测试成功！")
 
 
 if __name__ == '__main__':

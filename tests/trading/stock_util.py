@@ -38,7 +38,7 @@ def trade_closed_curbar(data, capital, long_margin, short_margin, volume_multipl
     open_close_profit = 0
     open_quantity = 0
     num = 0
-    for curdt, curprice in data.close.iteritems():
+    for curdt, curprice in data.close.items():
         open_price = data.open[curdt]
         curtime = curdt.time()
         curdate = curdt.date()
@@ -122,7 +122,7 @@ def buy_monday_sell_friday(data, capital, long_margin, volume_multiple):
     open_close_profit = 0
     open_quantity = 0
     num = 0
-    for curdt, curprice in data.close.iteritems():
+    for curdt, curprice in data.close.items():
         pos_profit = 0
         open_price = data.open[curdt]
         weekday = curdt.weekday()

@@ -6,7 +6,7 @@ from quantdigger.interaction import (
     Backend,
     WindowGate,
 )
-from quantdigger.util import mlogger as log
+from quantdigger.util import log
 
 
 class Shell:

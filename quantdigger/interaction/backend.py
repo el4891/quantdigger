@@ -3,7 +3,7 @@
 
 from quantdigger.event.rpc import EventRPCServer
 from quantdigger.event.eventengine import ZMQEventEngine
-from quantdigger.util import mlogger as log
+from quantdigger.util import log
 from quantdigger.datasource.data import DataManager
 from quantdigger.datastruct import Contract, PContract
 from quantdigger.interaction.serialize import (

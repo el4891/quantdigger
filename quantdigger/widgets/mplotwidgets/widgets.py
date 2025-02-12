@@ -8,7 +8,7 @@ from matplotlib.ticker import Formatter
 import matplotlib.ticker as mticker
 import numpy as np
 
-from quantdigger.util.log import gen_log as log
+from quantdigger.util import log
 
 
 def slider_strtime_format(delta):

@@ -14,7 +14,7 @@ def override_attributes(method):
     def wrapper(self, widget, *args, **kwargs):
         self.widget = widget
         # 用函数中的参数覆盖属性。
-        arg_names = inspect.getargspec(method).args[2:]
+        arg_names = inspect.getfullargspec(method).args[2:]
         method_args = {}
         obj_attrs = {}
         for i, arg in enumerate(args):
